@@ -30,8 +30,8 @@ double getint(){
     if(i > 0){
       int a = i;
       while(a > 0){
-       l *= 10;
-       a--;
+        l *= 10;
+        a--;
       }
     }      
     double c = 1;
@@ -46,6 +46,4 @@ double getint(){
   }
   return number;
 }
-
-
 
