@@ -10,13 +10,13 @@ void loop(){
   }
 }
 
-double getint(){
-  boolean minus = false;
-  double l = 1;
+double getnumber(){
   double number = 0;
   if(Serial.available() > 0){
-    int get[20];
+    boolean minus = false;
+    double get[20];
     int i = 0;
+    double c = 1;
     while(Serial.available() > 0){
       get[i] = Serial.read() - 48;
       if(get[i] == -3){
@@ -27,17 +27,9 @@ double getint(){
       delay(30);
     }
     i--;
-    if(i > 0){
-      int a = i;
-      while(a > 0){
-        l *= 10;
-        a--;
-      }
-    }      
-    double c = 1;
     while(i>=0){
-      number = number + get[i]*c;
-      c *= 10;
+      number += get[i]*l;
+      l *= 10;
       i--;
     }
   }
