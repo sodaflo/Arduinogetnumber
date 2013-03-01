@@ -1,0 +1,1 @@
+The function grabs a number from the serial connection as an integer or double. Just implement the function in your Sourcecode and call the function getint(), it will return the number(works for negative numbers, too).
