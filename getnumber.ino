@@ -18,24 +18,31 @@ double getnumber(){
     int i = 0;
     double c = 1;
     while(Serial.available() > 0){
+      //-48, da ASCII-Code ankommt
       get[i] = Serial.read() - 48;
-      if(get[i] == -3){
-        i--;
-        minus = true;
+      //'-' ist in ASCII 45 und wäre dann jetzt -3
+      //Wenn das erste Zeichen ein '-' ist, dann wir das i wieder zurückgesetzt
+      //in 'minus' wird gespeichert, dass die Zahl negativ ist
+      if(get[i] == -3){ 
+        i--;  		
+        minus = true;	
       }
       i++;
-      delay(30);
+      //kleine Zeitverzögerung um der Schnittstelle Zeit zu lassen
+      delay(5);
     }
     i--;
     while(i>=0){
-      number += get[i]*l;
+      //zusammenrechnung der verschiedenen Werte mit entsprechender 10er-Potenz
+      number += get[i]*l;	
       l *= 10;
       i--;
     }
   }
-  if(minus){
+  //wenn erstes Zeichen ein Minuszeichen ist, dann wird 'number' negativ
+  if(minus){ 
     number *= -1;
   }
+  //gibt die empfangene Zahl zurück
   return number;
 }
-
